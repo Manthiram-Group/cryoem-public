@@ -6,14 +6,14 @@
 source "$PWD/cryosparc_notifications_library.sh"
 
 ### USER INPUTS ###
-project_uid="P614" # Necessary
+project_uid="" # Necessary
 workspace_uid="" # If this is not specified, a job_uid must be specified. If workspace_uid and job_uid are specified, this script will default to enabling notifications for the workspace, rather than the job.
-job_uid="J214" # If this is not specified, a workspace_uid must be specified.
-uid="6603e22f4943a7fdd263e2f6" # Necessary. Your user ID that can be found in the CryoSPARC web interface by clicking the three dots in the left toolbar then clicking your name at the bottom of the list. Example: 6603e22f4943a7fdd263e2f6
-username="nick" # Necessary. Your first name all lowercase. This will tell the functions which person to send the Slack notifications to.
+job_uid="" # If this is not specified, a workspace_uid must be specified.
+uid="" # Necessary. Your user ID that can be found in the CryoSPARC web interface by clicking the three dots in the left toolbar then clicking your name at the bottom of the list. Example: 6603e22f4943a7fdd263e2f6
+username="" # Necessary. Your first name all lowercase. This will tell the functions which person to send the Slack notifications to.
 time_between_loops_mag="" # Optional. The magnitude of time between each loop of the while loop that checks whether a new notification should be sent. Defaults to 5.
 time_between_loops_unit="" # Optional. The unit of time between each loop of the while loop that checks whether a new notification should be sent. Can be either 's', 'm', or 'h'. Defaults to 'm'.
-create_tag=false # The first time you run this script, leave this value as true to create the 'notif-on' tag in CryoSPARC. Afterwards, you can set this to false.
+create_tag=true # The first time you run this script, leave this value as true to create the 'notif-on' tag in CryoSPARC. Afterwards, you can set this to false.
 
 ### ENABLING NOTIFICATIONS: DO NOT EDIT BELOW THIS LINE ###
 
