@@ -1,4 +1,8 @@
+# Setting Up a Slack App to Be Able to Receive CryoSPARC Notifications
+
 # Enabling Notifications for CryoSPARC
+
+__If you have not already set up a Slack app, made a webhook, and put that webhook in the cryosparc_notifications_library_generic file, complete the steps in the "Setting Up a Slack App to Be Able to Receive CryoSPARC Notifications" section before coming here.__
 
 1. Download the "cryoem" repository as a zip file by clicking the green box that says "<> Code" and selecting "Download Zip" from the dropdown.
 2. Copy the cryoem repo into your cemaster directory using secure copy (scp) in your shell as follows:
