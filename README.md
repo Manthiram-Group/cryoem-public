@@ -1,3 +1,18 @@
+# Working Principle of the CryoSPARC Notifications System
+
+This CryoSPARC notifications script uses the tag system in CryoSPARC to identify which jobs have notifications enabled. By running the cryosparc_enable_notifications.sh script, all specified jobs will be tagged with a user-specific "notifs-on" tag created by the script. The script will then periodically check the job status and send a Slack notification if the job status has changed. Notifications will be sent:
+
+- When a job begins running (not when it is "launched" or "queued").
+- When a job is completed (which deactivates notifications).
+- When a job fails (which deactivates notifications).
+- When a job is killed (which deactivates notifications).
+- When a job is deleted (which deactivates notifications).
+- When the "notifs-on" tag is manually removed in the CryoSPARC web interface (which deactivates notifications).
+
+The script defaults to check every five minutes whether a job's status has changed, but this time interval can be adjusted. Notifications can be enabled for single CryoSPARC jobs or entire CryoSPARC workspaces with one run of the "cryosparc_enable_notifications.sh" script. Note that you cannot enable notifications by manually tagging a job in the CryoSPARC web interface.
+
+If you run into errors or have questions, please email me at nsnyder@caltech.edu or snydern2000@gmail.com.
+  
 # Setting Up a Slack App to Be Able to Receive CryoSPARC Notifications
 
 1. If you are the first person in your Slack workspace who will be receiving CryoSPARC notifications, you will have to create a Slack app. Visit the following link and click "Create New App": https://api.slack.com/apps.
@@ -65,23 +80,31 @@ __If you have not already set up a Slack app and made a webhook, complete the st
 
    ```webhook=""```
 
-   paste your webhook from your Slack app between the quotations using Ctrl+Shift+V. (Note: __do not__ paste your webhook where the script says
-
-   ```local webhook=""```
-
-   in line 25).
+   paste your webhook from your Slack app between the quotations using Ctrl+Shift+V. (Note: __do not__ paste your webhook where the script says ```local webhook=""``` in line 25).
 
 9. Every subsequent user that wishes to add their username and Slack webhook can do so by following the syntax in lines 27-29 to add to the "case" statement.
 10. Exit INSERT mode and re-enter COMMAND mode by pressing "Esc" on your keyboard. Type ":wq" and hit return to save your changes (wq stands for "write quit").
 
 11. Open the "cryosparc_enable_notifications.sh" script in the VIM text editor using the following command in the terminal:
 
-   ```vim cryosparc_enable_notifications.sh```
+    ```vim cryosparc_enable_notifications.sh```
 
 11. Edit the "cryosparc_enable_notifications.sh" script under where it says ### USER INPUTS ### to match your needs. Once again, press "i" on your keyboard to enter INSERT mode. Use the arrow keys to navigate around and make changes as necessary. Once you are done editing, press Esc on your keyboard to re-enter COMMAND mode. Type ":wq" and hit return to save your changes.
 
 12. Run the following command in your terminal to enable notifications for your chosen workspace or job:
 
-   ```bash cryosparc_enable_notifications.sh```
+    ```bash cryosparc_enable_notifications.sh```
 
-# Working Principle of the CryoSPARC Notifications System
+# Turning Off Notifications
+
+In most cases, notifications will be turned off through natural usage of the script. However, if you want to force quit all notification processes you have running, ssh into the cemaster cluster and run the following command:
+
+```pgrep -f cryosparc_enable_notifications.sh -u username```
+
+where "username" is replaced with your cemaster username. This command will output a list of process IDs corresponding to the notification scripts you have running. Run the command 
+
+```kill PID```
+
+where "PID" is replaced with any of the process IDs output by the previous command. You can kill multiple processes like so:
+
+```kill PID1 PID2 PID3```
