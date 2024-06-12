@@ -59,15 +59,28 @@ __If you have not already set up a Slack app and made a webhook, complete the st
 
    ```vim cryosparc_notifications_library.sh```
 
-6. 
+6. Press "i" on your keyboard to enter INSERT mode. Use the arrow keys to navigate to line 27 where it says INSERT_USERNAME_HERE.
+7. Replace the "INSERT_USERNAME_HERE" text with a username of your choice. I recommend using either your cemaster username or your first name. Just make sure it is unique for each person using CryoSPARC notifications in your Slack workspace.
+8. In line 28 where the script says
 
-7. Open the "cryosparc_enable_notifications.sh" script in the VIM text editor using the following command in the terminal:
+   ```webhook=""```
+
+   paste your webhook from your Slack app between the quotations using Ctrl+Shift+V. (Note: __do not__ paste your webhook where the script says
+
+   ```local webhook=""```
+
+   in line 25).
+
+9. Every subsequent user that wishes to add their username and Slack webhook can do so by following the syntax in lines 27-29 to add to the "case" statement.
+10. Exit INSERT mode and re-enter COMMAND mode by pressing "Esc" on your keyboard. Type ":wq" and hit return to save your changes (wq stands for "write quit").
+
+11. Open the "cryosparc_enable_notifications.sh" script in the VIM text editor using the following command in the terminal:
 
    ```vim cryosparc_enable_notifications.sh```
 
-8. Edit the "cryosparc_enable_notifications.sh" script under where it says ### USER INPUTS ### to match your needs. To do so, press "i" on your keyboard to enter INSERT mode. Use the arrow keys to navigate around and make changes as necessary. Once you are done editing, press Esc on your keyboard to re-enter COMMAND mode. Type ":wq" and hit return to save your changes (wq stands for "write quit").
+11. Edit the "cryosparc_enable_notifications.sh" script under where it says ### USER INPUTS ### to match your needs. Once again, press "i" on your keyboard to enter INSERT mode. Use the arrow keys to navigate around and make changes as necessary. Once you are done editing, press Esc on your keyboard to re-enter COMMAND mode. Type ":wq" and hit return to save your changes.
 
-9. Run the following command in your terminal:
+12. Run the following command in your terminal to enable notifications for your chosen workspace or job:
 
    ```bash cryosparc_enable_notifications.sh```
 
