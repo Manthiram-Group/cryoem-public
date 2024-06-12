@@ -3,6 +3,7 @@
 This CryoSPARC notifications script uses the tag system in CryoSPARC to identify which jobs have notifications enabled. By running the cryosparc_enable_notifications.sh script, all specified jobs will be tagged with a user-specific "notifs-on" tag created by the script. The script will then periodically check the job status and send a Slack notification if the job status has changed. Notifications will be sent:
 
 - When a job begins running (not when it is "launched" or "queued").
+- When a job is waiting for your input
 - When a job is completed (which deactivates notifications).
 - When a job fails (which deactivates notifications).
 - When a job is killed (which deactivates notifications).
